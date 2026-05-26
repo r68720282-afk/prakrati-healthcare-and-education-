@@ -1,0 +1,1 @@
+export default function CareersPage(){return <div className='max-w-6xl mx-auto p-6'><h1 className='text-3xl font-bold'>Careers</h1><p className='mt-3'>Careers content for Prakarati Healthcare & Education.</p></div>}
