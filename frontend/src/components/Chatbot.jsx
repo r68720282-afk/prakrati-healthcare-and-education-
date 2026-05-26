@@ -1,0 +1,3 @@
+import { useState } from 'react';
+const faq={careers:'Visit Careers page to apply.',contact:'Use contact form or WhatsApp.',health:'We run awareness camps and yoga sessions.'};
+export default function Chatbot(){const[q,setQ]=useState('');const[a,setA]=useState('');return <div className='fixed left-4 bottom-4'><div className='glass rounded-xl p-3 w-64'><input className='w-full border p-2 text-sm' value={q} onChange={e=>setQ(e.target.value)} placeholder='Ask chatbot'/><button className='mt-2 bg-brand-blue text-white px-3 py-1 rounded' onClick={()=>setA(faq[q.toLowerCase()]||'Please contact support: https://wa.me/910000000000')}>Ask</button><p className='text-sm mt-2'>{a}</p></div></div>}
