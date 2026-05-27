@@ -1,0 +1,13 @@
+{
+  "name": "prakarati-healthcare-and-education",
+  "private": true,
+  "version": "1.0.1",
+  "workspaces": ["frontend", "server"],
+  "scripts": {
+    "install:all": "npm install --workspaces",
+    "build": "npm run build -w frontend",
+    "start": "npm run start -w server",
+    "start:server": "npm run start -w server",
+    "build:frontend": "npm run build -w frontend"
+  }
+}
