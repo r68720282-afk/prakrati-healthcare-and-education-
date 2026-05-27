@@ -1,0 +1,1 @@
+export default function ProgramsPage(){return <div className='max-w-6xl mx-auto p-6'><h1 className='text-3xl font-bold'>Programs</h1><p className='mt-3'>Programs content for Prakarati Healthcare & Education.</p></div>}
