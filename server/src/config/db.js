@@ -1,6 +1,9 @@
-export const isDatabaseAvailable = () => false;
+import mongoose from 'mongoose';
 
 export const connectDB = async () => {
-  console.warn('MongoDB integration is temporarily disabled. Running with mock data only.');
-  return false;
+  const uri = process.env.MONGO_URI || process.env.MONGODB_URI;
+  if (!uri) throw new Error('MONGO_URI is required');
+  mongoose.set('strictQuery', true);
+  await mongoose.connect(uri);
+  console.log('MongoDB connected');
 };

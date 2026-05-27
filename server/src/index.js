@@ -17,21 +17,15 @@ app.use(express.json({ limit: '2mb' }));
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 400 }));
 
-app.get('/health', (_req, res) => res.json({ status: 'ok', service: 'prakarati-server', mode: 'mock' }));
+app.get('/health', (_req, res) => res.json({ status: 'ok', service: 'prakarati-server' }));
 app.use('/api', routes);
 app.use(notFound);
 app.use(errorHandler);
 
-const PORT = Number(process.env.PORT) || 10000;
-
-const start = async () => {
-  await connectDB();
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+const PORT = Number(process.env.PORT) || 5000;
+connectDB()
+  .then(() => app.listen(PORT, () => console.log(`Server running on ${PORT}`)))
+  .catch((e) => {
+    console.error('Startup failure:', e.message);
+    process.exit(1);
   });
-};
-
-start().catch((e) => {
-  console.error('Startup warning:', e.message);
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-});
