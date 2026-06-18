@@ -23,7 +23,21 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-slate-100 p-6">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">
+        <div className="flex justify-between items-center mb-8">
+  <h1 className="text-4xl font-bold">
+    Admin Dashboard
+  </h1>
+
+  <button
+    onClick={() => {
+      localStorage.removeItem("adminToken");
+      window.location.href = "/admin-login";
+    }}
+    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg"
+  >
+    Logout
+  </button>
+</div>
           Admin Dashboard
         </h1>
 
