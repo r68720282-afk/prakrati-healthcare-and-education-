@@ -1,2 +1,140 @@
-import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
-export default function AdminPage(){const data=[{name:'Blogs',v:18},{name:'Careers',v:9},{name:'Contacts',v:24}]; return <div className='min-h-screen bg-slate-900 text-white p-6'><h1 className='text-3xl mb-4'>Admin Dashboard</h1><div className='grid md:grid-cols-4 gap-4 mb-4'>{['Blog','Careers','Events','Newsletter'].map(c=><div key={c} className='bg-slate-800 p-4 rounded'>{c} Management</div>)}</div><div className='bg-slate-800 rounded p-4 h-72'><ResponsiveContainer width='100%' height='100%'><BarChart data={data}><XAxis dataKey='name' stroke='#fff'/><Tooltip/><Bar dataKey='v' fill='#34d399'/></BarChart></ResponsiveContainer></div></div>}
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+export default function AdminPage() {
+const [queries, setQueries] = useState([]);
+const [loading, setLoading] = useState(true);
+
+const loadQueries = async () => {
+try {
+const res = await axios.get("/api/contact-requests");
+setQueries(res.data || []);
+} catch (err) {
+console.error(err);
+} finally {
+setLoading(false);
+}
+};
+
+const deleteQuery = async (id) => {
+if (!window.confirm("Delete this query?")) return;
+
+```
+try {
+  await axios.delete(`/api/contact-requests/${id}`);
+  loadQueries();
+} catch (err) {
+  console.error(err);
+  alert("Delete failed");
+}
+```
+
+};
+
+useEffect(() => {
+loadQueries();
+}, []);
+
+return ( <div className="min-h-screen bg-slate-100 p-6"> <div className="max-w-7xl mx-auto">
+
+```
+    <h1 className="text-4xl font-bold mb-8">
+      Admin Dashboard
+    </h1>
+
+    <div className="grid md:grid-cols-3 gap-6 mb-8">
+      <div className="bg-white rounded-xl shadow p-6">
+        <h3 className="text-gray-500">Total Queries</h3>
+        <p className="text-4xl font-bold mt-2">
+          {queries.length}
+        </p>
+      </div>
+
+      <div className="bg-white rounded-xl shadow p-6">
+        <h3 className="text-gray-500">Status</h3>
+        <p className="text-2xl font-semibold mt-2 text-green-600">
+          Active
+        </p>
+      </div>
+
+      <div className="bg-white rounded-xl shadow p-6">
+        <h3 className="text-gray-500">Website</h3>
+        <p className="text-2xl font-semibold mt-2">
+          Prakrati Healthcare
+        </p>
+      </div>
+    </div>
+
+    <div className="bg-white rounded-xl shadow overflow-hidden">
+      <div className="p-5 border-b">
+        <h2 className="text-2xl font-semibold">
+          Healthcare Queries
+        </h2>
+      </div>
+
+      {loading ? (
+        <div className="p-6">Loading...</div>
+      ) : (
+        <div className="overflow-auto">
+          <table className="w-full">
+            <thead className="bg-slate-100">
+              <tr>
+                <th className="text-left p-4">Name</th>
+                <th className="text-left p-4">Mobile</th>
+                <th className="text-left p-4">District</th>
+                <th className="text-left p-4">Query</th>
+                <th className="text-left p-4">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {queries.map((item) => (
+                <tr
+                  key={item._id}
+                  className="border-t"
+                >
+                  <td className="p-4">
+                    {item.name}
+                  </td>
+
+                  <td className="p-4">
+                    {item.phone}
+                  </td>
+
+                  <td className="p-4">
+                    {item.location}
+                  </td>
+
+                  <td className="p-4 max-w-sm">
+                    {item.message}
+                  </td>
+
+                  <td className="p-4">
+                    <button
+                      onClick={() =>
+                        deleteQuery(item._id)
+                      }
+                      className="bg-red-500 text-white px-4 py-2 rounded"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {queries.length === 0 && (
+            <div className="p-6 text-center text-gray-500">
+              No Queries Found
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+```
+
+);
+}
