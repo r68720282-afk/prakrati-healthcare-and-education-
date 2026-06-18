@@ -1,27 +1,47 @@
 export default function ServicesSection() {
   const services = [
-    "Healthcare Guidance",
-    "Healthcare Query Support",
-    "Health Awareness Programs",
-    "Education Guidance"
+    {
+      title: "Healthcare Guidance",
+      desc: "Reliable healthcare information and support."
+    },
+    {
+      title: "Healthcare Query Support",
+      desc: "Submit your healthcare queries and get assistance."
+    },
+    {
+      title: "Health Awareness",
+      desc: "Awareness programs for healthier communities."
+    },
+    {
+      title: "Education Guidance",
+      desc: "Educational support and career guidance."
+    }
   ];
 
   return (
-    <section className="py-16">
+    <section className="py-20 bg-slate-50">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-10">
+        <h2 className="text-4xl font-bold text-center mb-4">
           Our Services
         </h2>
 
-        <div className="grid md:grid-cols-4 gap-6">
-          {services.map((item) => (
+        <p className="text-center text-gray-600 mb-12">
+          Supporting communities through healthcare and education.
+        </p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map((service) => (
             <div
-              key={item}
-              className="bg-white shadow-md rounded-xl p-6 text-center"
+              key={service.title}
+              className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition"
             >
-              <h3 className="font-semibold text-lg">
-                {item}
+              <h3 className="text-xl font-semibold mb-3">
+                {service.title}
               </h3>
+
+              <p className="text-gray-600">
+                {service.desc}
+              </p>
             </div>
           ))}
         </div>
