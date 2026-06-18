@@ -1,1 +1,80 @@
-export default function AboutPage(){return <div className='max-w-6xl mx-auto p-6'><h1 className='text-3xl font-bold'>About</h1><p className='mt-3'>About content for Prakarati Healthcare & Education.</p></div>}
+import { Helmet } from "react-helmet-async";
+
+export default function AboutPage() {
+  return (
+    <>
+      <Helmet>
+        <title>About Us | Prakrati Healthcare & Education</title>
+      </Helmet>
+
+      <section className="bg-gradient-to-r from-green-700 to-green-500 text-white py-20">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h1 className="text-5xl font-bold mb-4">
+            About Prakrati Healthcare & Education
+          </h1>
+
+          <p className="text-lg max-w-3xl mx-auto">
+            Dedicated to supporting communities through healthcare guidance,
+            awareness initiatives, and educational assistance.
+          </p>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-2 gap-10">
+          <div>
+            <h2 className="text-3xl font-bold mb-4">
+              Who We Are
+            </h2>
+
+            <p className="text-gray-700 leading-8">
+              Prakrati Healthcare & Education is committed to helping people
+              access healthcare information, healthcare support services,
+              awareness programs, and educational guidance.
+            </p>
+
+            <p className="text-gray-700 leading-8 mt-4">
+              Our mission is to provide reliable support, spread awareness,
+              and help communities make informed decisions regarding health
+              and education.
+            </p>
+          </div>
+
+          <div className="bg-white shadow-lg rounded-xl p-8">
+            <h2 className="text-2xl font-bold mb-4 text-green-700">
+              Our Mission
+            </h2>
+
+            <p className="text-gray-700">
+              To improve access to healthcare guidance and educational support
+              for individuals and families.
+            </p>
+
+            <h2 className="text-2xl font-bold mt-8 mb-4 text-green-700">
+              Our Vision
+            </h2>
+
+            <p className="text-gray-700">
+              A healthier and better informed society empowered through
+              healthcare awareness and education.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-100 py-16">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold mb-8">
+            Contact Information
+          </h2>
+
+          <div className="space-y-4 text-lg">
+            <p>📞 Phone: 8962222552</p>
+            <p>💬 WhatsApp: 8962222552</p>
+            <p>📍 Madhya Pradesh, India</p>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
