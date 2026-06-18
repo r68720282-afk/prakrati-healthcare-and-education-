@@ -1,18 +1,35 @@
-import { Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import Chatbot from './components/Chatbot';
+import { Routes, Route } from "react-router-dom";
 
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import AdminPage from './pages/AdminPage';
+import Layout from "./components/Layout";
+import Chatbot from "./components/Chatbot";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import AdminPage from "./pages/AdminPage";
+import AdminLoginPage from "./pages/AdminLoginPage";
 
 export default function App() {
   return (
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
+
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/admin" element={<AdminPage />} />
+
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin-login"
+          element={<AdminLoginPage />}
+        />
       </Routes>
 
       <Chatbot />
