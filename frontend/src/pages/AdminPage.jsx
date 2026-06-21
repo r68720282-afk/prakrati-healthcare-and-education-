@@ -108,20 +108,18 @@ return ( <div className="min-h-screen bg-slate-100 p-6"> <div className="max-w-7
 
           </table>
 
-          {queries.length === 0 && (
+                   {queries.length === 0 && (
             <div className="p-6 text-center text-gray-500">
               No Queries Found
             </div>
           )}
 
+            </div>
+          )}
         </div>
-      )}
-
+      </div>
     </div>
-
-  </div>
-</div>
-```
-
+  );
+}
 );
 }
