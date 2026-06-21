@@ -19,7 +19,20 @@ export default function AdminPage() {
 
     loadQueries();
   }, []);
+const deleteQuery = async (id) => {
+  const confirmDelete = window.confirm(
+    "Are you sure you want to delete this query?"
+  );
 
+  if (!confirmDelete) return;
+
+  try {
+    await axios.delete(`/api/contact-requests/${id}`);
+
+    setQueries((prev) =>
+      prev.filter((item) => item._id !== id)
+    );
+  } catch (error) {
   const logout = () => {
     localStorage.removeItem("adminToken");
     window.location.href = "/admin-login";
