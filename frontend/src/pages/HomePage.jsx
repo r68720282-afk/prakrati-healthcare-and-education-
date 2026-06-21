@@ -23,6 +23,8 @@ export default function HomePage() {
 
       <HeroSection />
 
+      <WhyChooseUs />
+      
       <AboutSection />
 
       <ServicesSection />
