@@ -23,28 +23,6 @@ loadQueries();
 
 }, []);
 
-const deleteQuery = async (id) => {
-const confirmDelete = window.confirm(
-"Are you sure you want to delete this query?"
-);
-
-```
-if (!confirmDelete) return;
-
-try {
-  await axios.delete(`/api/contact-requests/${id}`);
-
-  setQueries((prev) =>
-    prev.filter((item) => item._id !== id)
-  );
-} catch (error) {
-  console.error(error);
-  alert("Delete failed");
-}
-```
-
-};
-
 const logout = () => {
 localStorage.removeItem("adminToken");
 window.location.href = "/admin-login";
@@ -67,6 +45,7 @@ return ( <div className="min-h-screen bg-slate-100 p-6"> <div className="max-w-7
     </div>
 
     <div className="grid md:grid-cols-3 gap-6 mb-8">
+
       <div className="bg-white p-6 rounded-xl shadow">
         <h3 className="text-gray-500">Total Queries</h3>
         <p className="text-4xl font-bold mt-2">
@@ -87,9 +66,11 @@ return ( <div className="min-h-screen bg-slate-100 p-6"> <div className="max-w-7
           Healthcare Portal
         </p>
       </div>
+
     </div>
 
     <div className="bg-white rounded-xl shadow overflow-hidden">
+
       <div className="p-5 border-b">
         <h2 className="text-2xl font-semibold">
           Healthcare Queries
@@ -97,17 +78,20 @@ return ( <div className="min-h-screen bg-slate-100 p-6"> <div className="max-w-7
       </div>
 
       {loading ? (
-        <div className="p-6">Loading...</div>
+        <div className="p-6">
+          Loading...
+        </div>
       ) : (
         <div className="overflow-auto">
+
           <table className="w-full">
+
             <thead className="bg-slate-100">
               <tr>
                 <th className="text-left p-4">Name</th>
                 <th className="text-left p-4">Mobile</th>
                 <th className="text-left p-4">District</th>
                 <th className="text-left p-4">Query</th>
-                <th className="text-left p-4">Action</th>
               </tr>
             </thead>
 
@@ -118,18 +102,10 @@ return ( <div className="min-h-screen bg-slate-100 p-6"> <div className="max-w-7
                   <td className="p-4">{item.phone}</td>
                   <td className="p-4">{item.location}</td>
                   <td className="p-4">{item.message}</td>
-
-                  <td className="p-4">
-                    <button
-                      onClick={() => deleteQuery(item._id)}
-                      className="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-lg"
-                    >
-                      Delete
-                    </button>
-                  </td>
                 </tr>
               ))}
             </tbody>
+
           </table>
 
           {queries.length === 0 && (
@@ -137,8 +113,10 @@ return ( <div className="min-h-screen bg-slate-100 p-6"> <div className="max-w-7
               No Queries Found
             </div>
           )}
+
         </div>
       )}
+
     </div>
 
   </div>
