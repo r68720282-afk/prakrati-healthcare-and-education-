@@ -10,38 +10,29 @@ import AdminPage from "./pages/AdminPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 
 export default function App() {
-return ( <Layout> <Routes>
+  return (
+    <Layout>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
 
-```
-    <Route
-      path="/"
-      element={<HomePage />}
-    />
+        <Route path="/about" element={<AboutPage />} />
 
-    <Route
-      path="/about"
-      element={<AboutPage />}
-    />
+        <Route
+          path="/admin-login"
+          element={<AdminLoginPage />}
+        />
 
-    <Route
-      path="/admin-login"
-      element={<AdminLoginPage />}
-    />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminPage />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
 
-    <Route
-      path="/admin"
-      element={
-        <ProtectedRoute>
-          <AdminPage />
-        </ProtectedRoute>
-      }
-    />
-
-  </Routes>
-
-  <Chatbot />
-</Layout>
-```
-
-);
+      <Chatbot />
+    </Layout>
+  );
 }
