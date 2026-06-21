@@ -1,124 +1,144 @@
-import { useState } from "react";
-import axios from "axios";
+import { motion } from "framer-motion";
 
-export default function HealthcareQueryForm() {
-  const [form, setForm] = useState({
-    name: "",
-    mobile: "",
-    district: "",
-    query: "",
-  });
+export default function HeroSection() {
+return ( <section className="bg-white overflow-hidden"> <div className="max-w-[1500px] mx-auto">
 
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState("");
+```
+    <div className="grid lg:grid-cols-[42%_58%] items-center min-h-[650px]">
 
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
+      {/* LEFT CONTENT */}
+      <motion.div
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7 }}
+        className="px-8 lg:px-12 py-10"
+      >
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+        <div className="inline-flex items-center border border-green-200 bg-green-50 text-green-700 px-5 py-3 rounded-full text-sm font-semibold mb-6">
+          Trusted Healthcare Guidance & Support
+        </div>
 
-    try {
-      setLoading(true);
+        <h1 className="text-5xl md:text-7xl font-bold leading-tight text-slate-900 mb-6">
+          Your Health,
+          <br />
+          <span className="text-green-600">
+            Our Responsibility
+          </span>
+        </h1>
 
-      await axios.post("/api/contact-requests", {
-        name: form.name,
-        phone: form.mobile,
-        location: form.district,
-        message: form.query,
-        category: "healthcare-query",
-      });
-
-      setSuccess("Your query has been submitted successfully.");
-
-      setForm({
-        name: "",
-        mobile: "",
-        district: "",
-        query: "",
-      });
-    } catch (error) {
-      console.error(error);
-      alert("Failed to submit query.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <section className="py-16 bg-slate-50">
-      <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-3">
-          Submit Your Healthcare Query
-        </h2>
-
-        <p className="text-center text-gray-600 mb-8">
-          Share your healthcare concern and our team will contact you.
+        <p className="text-slate-600 text-xl leading-9 mb-8 max-w-xl">
+          Prakrati Healthcare & Education provides healthcare
+          guidance, awareness programs, wellness initiatives,
+          educational support and healthcare query assistance.
         </p>
 
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white shadow-lg rounded-xl p-6"
-        >
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            required
-            className="w-full border p-3 mb-4 rounded"
-            placeholder="Full Name"
-          />
+        <div className="flex flex-wrap gap-4 mb-8">
 
-          <input
-            type="text"
-            name="mobile"
-            value={form.mobile}
-            onChange={handleChange}
-            required
-            className="w-full border p-3 mb-4 rounded"
-            placeholder="Mobile Number"
-          />
-
-          <input
-            type="text"
-            name="district"
-            value={form.district}
-            onChange={handleChange}
-            required
-            className="w-full border p-3 mb-4 rounded"
-            placeholder="District"
-          />
-
-          <textarea
-            name="query"
-            value={form.query}
-            onChange={handleChange}
-            required
-            rows="5"
-            className="w-full border p-3 mb-4 rounded"
-            placeholder="Your Query"
-          />
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg w-full"
+          <a
+            href="tel:8962222552"
+            className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-xl font-semibold transition-all"
           >
-            {loading ? "Submitting..." : "Submit Query"}
-          </button>
+            Call Now
+          </a>
 
-          {success && (
-            <div className="mt-4 text-green-600 font-medium">
-              {success}
-            </div>
-          )}
-        </form>
+          <a
+            href="https://wa.me/918962222552"
+            className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 rounded-xl font-semibold transition-all"
+          >
+            WhatsApp
+          </a>
+
+          <a
+            href="#query"
+            className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-4 rounded-xl font-semibold transition-all"
+          >
+            Submit Query
+          </a>
+
+        </div>
+
+        <div className="bg-white shadow-xl rounded-2xl p-5 flex flex-wrap gap-6 text-slate-700 text-sm">
+          <span>✓ Reliable Support</span>
+          <span>✓ Confidential & Secure</span>
+          <span>✓ Quick Response</span>
+        </div>
+
+      </motion.div>
+
+      {/* RIGHT IMAGE */}
+      <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        className="relative h-[550px] lg:h-[650px]"
+      >
+
+        <img
+          src="/hero.jpg"
+          alt="Healthcare"
+          className="
+            absolute
+            inset-0
+            w-full
+            h-full
+            object-cover
+            rounded-l-[50px]
+          "
+        />
+
+      </motion.div>
+
+    </div>
+
+    {/* FEATURE CARDS */}
+
+    <div className="grid md:grid-cols-4 gap-6 px-8 lg:px-12 py-12 bg-slate-50">
+
+      <div className="bg-white p-6 rounded-3xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+        <h3 className="text-xl font-bold mb-3">
+          Healthcare Support
+        </h3>
+
+        <p className="text-gray-600">
+          Providing trusted healthcare guidance and support.
+        </p>
       </div>
-    </section>
-  );
+
+      <div className="bg-white p-6 rounded-3xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+        <h3 className="text-xl font-bold mb-3">
+          Health Awareness
+        </h3>
+
+        <p className="text-gray-600">
+          Promoting awareness for healthier communities.
+        </p>
+      </div>
+
+      <div className="bg-white p-6 rounded-3xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+        <h3 className="text-xl font-bold mb-3">
+          Yoga & Wellness
+        </h3>
+
+        <p className="text-gray-600">
+          Encouraging healthy and balanced lifestyles.
+        </p>
+      </div>
+
+      <div className="bg-white p-6 rounded-3xl shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
+        <h3 className="text-xl font-bold mb-3">
+          Education Guidance
+        </h3>
+
+        <p className="text-gray-600">
+          Supporting students with education assistance.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+```
+
+);
 }
