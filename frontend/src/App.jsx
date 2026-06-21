@@ -1,48 +1,12 @@
 ```jsx
-import { Routes, Route } from "react-router-dom";
+import React from "react";
 
-import Layout from "./components/Layout";
-import Chatbot from "./components/Chatbot";
-import ProtectedRoute from "./components/ProtectedRoute";
-
-import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
-import AdminLoginPage from "./pages/AdminLoginPage";
-
-const AdminPage = () => {
+export default function App() {
   return (
-    <div className="p-10">
-      <h1>Admin Dashboard Test</h1>
+    <div style={{ padding: "40px" }}>
+      <h1>Prakrati Healthcare & Education</h1>
+      <p>App Working Successfully</p>
     </div>
   );
-};
-
-function App() {
-  return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute>
-              <AdminPage />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/admin-login"
-          element={<AdminLoginPage />}
-        />
-      </Routes>
-
-      <Chatbot />
-    </Layout>
-  );
 }
-
-export default App;
 ```
