@@ -1,61 +1,100 @@
 import { Link } from "react-router-dom";
 
 export default function Layout({ children }) {
-  return (
-    <div className="min-h-screen bg-white">
+return ( <div className="min-h-screen bg-white">
 
-      <header className="sticky top-0 z-50 bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center justify-between h-20">
+```
+  <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b">
 
-            <Link to="/" className="flex items-center gap-3">
-              <img
-                src="/logo.png"
-                alt="Prakrati"
-                className="h-12 w-auto"
-              />
+    <div className="max-w-7xl mx-auto px-6">
 
-              <div>
-                <h2 className="font-bold text-green-700 text-xl">
-                  PRAKRATI
-                </h2>
+      <div className="flex items-center justify-between h-20">
 
-                <p className="text-xs text-slate-500">
-                  Healthcare & Education
-                </p>
-              </div>
-            </Link>
+        <Link to="/" className="flex items-center gap-3">
 
-            <nav className="hidden md:flex items-center gap-8 font-medium text-slate-700">
-              <Link to="/">Home</Link>
-              <Link to="/about">About Us</Link>
-              <a href="#services">Services</a>
-              <a href="#gallery">Gallery</a>
-              <a href="#query">Healthcare Query</a>
-            </nav>
+          <img
+            src="/logo.png"
+            alt="Prakrati"
+            className="h-12 w-auto"
+          />
 
-            <a
-              href="tel:8962222552"
-              className="bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-xl font-semibold transition"
-            >
-              Call Now
-            </a>
+          <div>
+            <h2 className="font-bold text-green-700 text-xl">
+              PRAKRATI
+            </h2>
 
+            <p className="text-xs text-slate-500">
+              Healthcare & Education
+            </p>
           </div>
-        </div>
-      </header>
 
-      <main>{children}</main>
+        </Link>
 
-      <a
-        href="https://wa.me/918962222552"
-        target="_blank"
-        rel="noreferrer"
-        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-full shadow-lg z-50"
-      >
-        WhatsApp
-      </a>
+        <nav className="hidden md:flex items-center gap-8 font-medium text-slate-700">
+
+          <Link
+            to="/"
+            className="hover:text-green-600 transition-all duration-300"
+          >
+            Home
+          </Link>
+
+          <Link
+            to="/about"
+            className="hover:text-green-600 transition-all duration-300"
+          >
+            About Us
+          </Link>
+
+          <a
+            href="#services"
+            className="hover:text-green-600 transition-all duration-300"
+          >
+            Services
+          </a>
+
+          <a
+            href="#gallery"
+            className="hover:text-green-600 transition-all duration-300"
+          >
+            Gallery
+          </a>
+
+          <a
+            href="#query"
+            className="hover:text-green-600 transition-all duration-300"
+          >
+            Healthcare Query
+          </a>
+
+        </nav>
+
+        <a
+          href="tel:8962222552"
+          className="bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
+        >
+          Call Now
+        </a>
+
+      </div>
 
     </div>
-  );
+
+  </header>
+
+  <main>{children}</main>
+
+  <a
+    href="https://wa.me/918962222552"
+    target="_blank"
+    rel="noreferrer"
+    className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-xl z-50 hover:scale-110 transition-all duration-300"
+  >
+    💬 WhatsApp
+  </a>
+
+</div>
+```
+
+);
 }
