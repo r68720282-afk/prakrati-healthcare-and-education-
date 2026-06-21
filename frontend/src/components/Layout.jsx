@@ -2,92 +2,60 @@ import { Link } from "react-router-dom";
 
 export default function Layout({ children }) {
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Top Bar */}
-      <div className="bg-green-700 text-white text-sm">
-        <div className="max-w-6xl mx-auto px-4 py-2 flex justify-between items-center">
-          <span>📞 8962222552</span>
+    <div className="min-h-screen bg-white">
 
-          <a
-            href="https://wa.me/918962222552"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-green-200"
-          >
-            WhatsApp Support
-          </a>
-        </div>
-      </div>
-
-      {/* Navbar */}
       <header className="sticky top-0 z-50 bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <Link
-            to="/"
-            className="text-xl font-bold text-green-700"
-          >
-            Prakrati Healthcare & Education
-          </Link>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between h-20">
 
-          <nav className="flex items-center gap-6">
-            <Link
-              to="/"
-              className="text-gray-700 hover:text-green-700 font-medium"
-            >
-              Home
+            <Link to="/" className="flex items-center gap-3">
+              <img
+                src="/logo.png"
+                alt="Prakrati"
+                className="h-12 w-auto"
+              />
+
+              <div>
+                <h2 className="font-bold text-green-700 text-xl">
+                  PRAKRATI
+                </h2>
+
+                <p className="text-xs text-slate-500">
+                  Healthcare & Education
+                </p>
+              </div>
             </Link>
 
-            <Link
-              to="/about"
-              className="text-gray-700 hover:text-green-700 font-medium"
-            >
-              About Us
-            </Link>
+            <nav className="hidden md:flex items-center gap-8 font-medium text-slate-700">
+              <Link to="/">Home</Link>
+              <Link to="/about">About Us</Link>
+              <a href="#services">Services</a>
+              <a href="#gallery">Gallery</a>
+              <a href="#query">Healthcare Query</a>
+            </nav>
 
-            <Link
-              to="/admin"
-              className="text-gray-700 hover:text-green-700 font-medium"
+            <a
+              href="tel:8962222552"
+              className="bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-xl font-semibold transition"
             >
-              Admin
-            </Link>
-          </nav>
+              Call Now
+            </a>
+
+          </div>
         </div>
       </header>
 
-      {/* Main Content */}
       <main>{children}</main>
 
-      {/* Floating WhatsApp Button */}
       <a
         href="https://wa.me/918962222552"
         target="_blank"
         rel="noreferrer"
-        className="fixed right-5 bottom-5 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg hover:scale-105 transition"
+        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-full shadow-lg z-50"
       >
         WhatsApp
       </a>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white mt-12">
-        <div className="max-w-6xl mx-auto px-4 py-10">
-          <h3 className="text-xl font-bold mb-3">
-            Prakrati Healthcare & Education
-          </h3>
-
-          <p className="text-slate-300 mb-4">
-            Your Health, Our Responsibility
-          </p>
-
-          <div className="space-y-2 text-slate-300">
-            <p>📞 Phone: 8962222552</p>
-            <p>💬 WhatsApp: 8962222552</p>
-          </div>
-
-          <div className="border-t border-slate-700 mt-6 pt-4 text-sm text-slate-400">
-            © 2026 Prakrati Healthcare & Education. All Rights Reserved.
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
