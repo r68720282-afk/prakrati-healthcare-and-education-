@@ -17,9 +17,9 @@ setLoading(false);
 }
 };
 
-```
+
 loadQueries();
-```
+
 
 }, []);
 
