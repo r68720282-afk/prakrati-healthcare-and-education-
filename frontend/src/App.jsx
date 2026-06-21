@@ -1,3 +1,4 @@
+```jsx
 import { Routes, Route } from "react-router-dom";
 
 import Layout from "./components/Layout";
@@ -6,8 +7,20 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
-import AdminPage from "./pages/AdminPage";
+// import AdminPage from "./pages/AdminPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
+
+// Temporary Test Component
+const AdminPage = () => {
+  return (
+    <div className="p-10">
+      <h1 className="text-3xl font-bold">
+        Admin Dashboard Test
+      </h1>
+      <p>AdminPage import removed for testing.</p>
+    </div>
+  );
+};
 
 export default function App() {
   return (
@@ -36,3 +49,4 @@ export default function App() {
     </Layout>
   );
 }
+```
