@@ -4,7 +4,10 @@ import HeroSection from "../components/HeroSection";
 import WhyChooseUs from "../components/WhyChooseUs";
 import AboutSection from "../components/AboutSection";
 import ServicesSection from "../components/ServicesSection";
+import ProcessSection from "../components/ProcessSection";
 import GallerySection from "../components/GallerySection";
+
+
 import HealthcareQueryForm from "../components/HealthcareQueryForm";
 
 export default function HomePage() {
@@ -28,6 +31,8 @@ export default function HomePage() {
       <AboutSection />
 
       <ServicesSection />
+
+      <ProcessSection />
 
       <GallerySection />
 
