@@ -6,6 +6,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
+import CareersPage from "./pages/CareersPage";
 import AdminPage from "./pages/AdminPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 
@@ -17,6 +18,8 @@ export default function App() {
 
         <Route path="/about" element={<AboutPage />} />
 
+        <Route path="/careers" element={<CareersPage />} />
+        
         <Route
           path="/admin-login"
           element={<AdminLoginPage />}
