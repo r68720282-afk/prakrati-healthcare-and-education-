@@ -56,6 +56,13 @@ export default function Layout({ children }) {
               </Link>
 
               <Link
+                to="/careers"
+                className="hover:text-green-600 transition-all duration-300"
+              >
+                Careers
+              </Link>
+
+              <Link
                 to="/#query"
                 className="hover:text-green-600 transition-all duration-300"
               >
