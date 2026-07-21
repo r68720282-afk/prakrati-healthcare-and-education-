@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Chatbot from "./components/Chatbot";
 import ProtectedRoute from "./components/ProtectedRoute";
-import ScrollToHash from "./components/ScrollToHash";
 
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -13,8 +12,6 @@ import AdminLoginPage from "./pages/AdminLoginPage";
 export default function App() {
   return (
     <Layout>
-      <ScrollToHash />
-
       <Routes>
         <Route path="/" element={<HomePage />} />
 
