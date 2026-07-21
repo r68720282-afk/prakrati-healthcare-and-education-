@@ -1,3 +1,4 @@
+import CareerApplication from "../models/CareerApplication.js";
 import express from 'express';
 import authRoutes from './authRoutes.js';
 import { makeCrudRoute } from './makeCrudRoute.js';
