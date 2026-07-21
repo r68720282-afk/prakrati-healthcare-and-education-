@@ -1,100 +1,91 @@
 import { Link } from "react-router-dom";
 
 export default function Layout({ children }) {
-return ( <div className="min-h-screen bg-white">
+  return (
+    <div className="min-h-screen bg-white">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-3">
+              <img
+                src="/logo.png"
+                alt="Prakrati"
+                className="h-12 w-auto"
+              />
 
-```
-  <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b">
+              <div>
+                <h2 className="font-bold text-green-700 text-xl">
+                  PRAKRATI
+                </h2>
 
-    <div className="max-w-7xl mx-auto px-6">
+                <p className="text-xs text-slate-500">
+                  Healthcare & Education
+                </p>
+              </div>
+            </Link>
 
-      <div className="flex items-center justify-between h-20">
+            {/* Navigation */}
+            <nav className="hidden md:flex items-center gap-8 font-medium text-slate-700">
+              <Link
+                to="/"
+                className="hover:text-green-600 transition-all duration-300"
+              >
+                Home
+              </Link>
 
-        <Link to="/" className="flex items-center gap-3">
+              <Link
+                to="/about"
+                className="hover:text-green-600 transition-all duration-300"
+              >
+                About Us
+              </Link>
 
-          <img
-            src="/logo.png"
-            alt="Prakrati"
-            className="h-12 w-auto"
-          />
+              <Link
+                to="/#services"
+                className="hover:text-green-600 transition-all duration-300"
+              >
+                Services
+              </Link>
 
-          <div>
-            <h2 className="font-bold text-green-700 text-xl">
-              PRAKRATI
-            </h2>
+              <Link
+                to="/#gallery"
+                className="hover:text-green-600 transition-all duration-300"
+              >
+                Gallery
+              </Link>
 
-            <p className="text-xs text-slate-500">
-              Healthcare & Education
-            </p>
+              <Link
+                to="/#query"
+                className="hover:text-green-600 transition-all duration-300"
+              >
+                Healthcare Query
+              </Link>
+            </nav>
+
+            {/* Call Button */}
+            <a
+              href="tel:8962222552"
+              className="bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
+            >
+              Call Now
+            </a>
           </div>
+        </div>
+      </header>
 
-        </Link>
+      {/* Page Content */}
+      <main>{children}</main>
 
-        <nav className="hidden md:flex items-center gap-8 font-medium text-slate-700">
-
-          <Link
-            to="/"
-            className="hover:text-green-600 transition-all duration-300"
-          >
-            Home
-          </Link>
-
-          <Link
-            to="/about"
-            className="hover:text-green-600 transition-all duration-300"
-          >
-            About Us
-          </Link>
-
-          <a
-            href="#services"
-            className="hover:text-green-600 transition-all duration-300"
-          >
-            Services
-          </a>
-
-          <a
-            href="#gallery"
-            className="hover:text-green-600 transition-all duration-300"
-          >
-            Gallery
-          </a>
-
-          <a
-            href="#query"
-            className="hover:text-green-600 transition-all duration-300"
-          >
-            Healthcare Query
-          </a>
-
-        </nav>
-
-        <a
-          href="tel:8962222552"
-          className="bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 shadow-lg"
-        >
-          Call Now
-        </a>
-
-      </div>
-
+      {/* WhatsApp Button */}
+      <a
+        href="https://wa.me/918962222552"
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-xl z-50 hover:scale-110 transition-all duration-300"
+      >
+        💬 WhatsApp
+      </a>
     </div>
-
-  </header>
-
-  <main>{children}</main>
-
-  <a
-    href="https://wa.me/918962222552"
-    target="_blank"
-    rel="noreferrer"
-    className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-xl z-50 hover:scale-110 transition-all duration-300"
-  >
-    💬 WhatsApp
-  </a>
-
-</div>
-```
-
-);
+  );
 }
