@@ -25,7 +25,7 @@ export default function HealthcareQueryForm() {
     try {
       setLoading(true);
 
-      await axios.post( "https://prakrati-healthcare-and-education-1.onrender.com/api/contactrequests", {
+      await axios.post( "https://prakrati-healthcare-and-education-1.onrender.com/api/contact-requests", {
         name: form.name,
         phone: form.mobile,
         location: form.district,
