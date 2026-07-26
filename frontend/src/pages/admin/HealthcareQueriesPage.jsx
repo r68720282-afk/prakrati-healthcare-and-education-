@@ -282,7 +282,7 @@ export default function HealthcareQueriesPage() {
 
         )}
 
-      </div> // 
+      </div> 
 // ======== PART 3 START =====
 // ===========================
 
