@@ -9,33 +9,40 @@ import AboutPage from "./pages/AboutPage";
 import CareersPage from "./pages/CareersPage";
 import AdminPage from "./pages/AdminPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
-
+import HealthcareQueriesPage from "./pages/admin/HealthcareQueriesPage";
 export default function App() {
   return (
     <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
+     <Routes>
+  <Route path="/" element={<HomePage />} />
 
-        <Route path="/about" element={<AboutPage />} />
+  <Route path="/about" element={<AboutPage />} />
 
-        <Route path="/careers" element={<CareersPage />} />
-        
-        <Route
-          path="/admin-login"
-          element={<AdminLoginPage />}
-        />
+  <Route path="/careers" element={<CareersPage />} />
 
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute>
-              <AdminPage />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
+  <Route
+    path="/admin-login"
+    element={<AdminLoginPage />}
+  />
 
-      <Chatbot />
-    </Layout>
-  );
-}
+  <Route
+    path="/admin"
+    element={
+      <ProtectedRoute>
+        <AdminPage />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/admin/queries"
+    element={
+      <ProtectedRoute>
+        <HealthcareQueriesPage />
+      </ProtectedRoute>
+    }
+  />
+</Routes>
+
+<Chatbot />
+</Layout>
