@@ -1,10 +1,3 @@
-
-
-// ===========================
-// HealthcareQueriesPage.jsx
-// ======== PART 1 START =====
-// ===========================
-
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
@@ -16,11 +9,8 @@ export default function HealthcareQueriesPage() {
 
   const [queries, setQueries] = useState([]);
   const [loading, setLoading] = useState(true);
-
   const [search, setSearch] = useState("");
-
   const [selectedQuery, setSelectedQuery] = useState(null);
-
   const [showModal, setShowModal] = useState(false);
 
   const headers = {
@@ -40,9 +30,8 @@ export default function HealthcareQueriesPage() {
       });
 
       setQueries(res.data || []);
-    } catch (err) {
-      console.error(err);
-
+    } catch (error) {
+      console.error(error);
       alert("Unable to load healthcare queries.");
     } finally {
       setLoading(false);
@@ -71,13 +60,12 @@ export default function HealthcareQueriesPage() {
     setSelectedQuery(null);
     setShowModal(false);
   };
-
-  const deleteQuery = async (id) => {
-    const ok = window.confirm(
-      "Delete this healthcare query?"
+    const deleteQuery = async (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this query?"
     );
 
-    if (!ok) return;
+    if (!confirmDelete) return;
 
     try {
       await axios.delete(`${API}/${id}`, {
@@ -89,9 +77,8 @@ export default function HealthcareQueriesPage() {
       );
 
       alert("Query deleted successfully.");
-    } catch (err) {
-      console.error(err);
-
+    } catch (error) {
+      console.error(error);
       alert("Unable to delete query.");
     }
   };
@@ -116,17 +103,13 @@ export default function HealthcareQueriesPage() {
             : item
         )
       );
-    } catch (err) {
-      console.error(err);
-
+    } catch (error) {
+      console.error(error);
       alert("Unable to update status.");
     }
   };
 
-  return (// ===========================
-// ======== PART 2 START =====
-// ===========================
-
+  return (
     <div className="min-h-screen bg-slate-100 p-8">
 
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
@@ -136,19 +119,18 @@ export default function HealthcareQueriesPage() {
             Healthcare Queries
           </h1>
 
-          <p className="text-slate-500 mt-1">
+          <p className="text-slate-500 mt-2">
             Total Queries : {filteredQueries.length}
           </p>
         </div>
 
         <input
           type="text"
-          placeholder="Search by Name, Phone, District..."
+          placeholder="Search by Name, Phone or District"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="w-full md:w-96 border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-600"
         />
-
       </div>
 
       <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
@@ -170,13 +152,9 @@ export default function HealthcareQueriesPage() {
                 <tr>
 
                   <th className="p-4 text-left">Name</th>
-
                   <th className="p-4 text-left">Phone</th>
-
                   <th className="p-4 text-left">District</th>
-
                   <th className="p-4 text-left">Status</th>
-
                   <th className="p-4 text-left">Action</th>
 
                 </tr>
@@ -184,115 +162,114 @@ export default function HealthcareQueriesPage() {
               </thead>
 
               <tbody>
+                  const deleteQuery = async (id) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this query?"
+    );
 
-                {filteredQueries.length === 0 ? (
+    if (!confirmDelete) return;
 
-                  <tr>
+    try {
+      await axios.delete(`${API}/${id}`, {
+        headers,
+      });
 
-                    <td
-                      colSpan="5"
-                      className="text-center py-10 text-slate-500"
-                    >
-                      No Healthcare Queries Found
-                    </td>
+      setQueries((prev) =>
+        prev.filter((item) => item._id !== id)
+      );
 
-                  </tr>
+      alert("Query deleted successfully.");
+    } catch (error) {
+      console.error(error);
+      alert("Unable to delete query.");
+    }
+  };
 
-                ) : (
+  const updateStatus = async (id, status) => {
+    try {
+      await axios.put(
+        `${API}/${id}`,
+        { status },
+        {
+          headers,
+        }
+      );
 
-                  filteredQueries.map((item) => (
+      setQueries((prev) =>
+        prev.map((item) =>
+          item._id === id
+            ? {
+                ...item,
+                status,
+              }
+            : item
+        )
+      );
+    } catch (error) {
+      console.error(error);
+      alert("Unable to update status.");
+    }
+  };
 
-                    <tr
-                      key={item._id}
-                      className="border-b hover:bg-slate-50 transition"
-                    >
+  return (
+    <div className="min-h-screen bg-slate-100 p-8">
 
-                      <td className="p-4 font-medium">
-                        {item.name}
-                      </td>
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
 
-                      <td className="p-4">
-                        {item.phone}
-                      </td>
+        <div>
+          <h1 className="text-3xl font-bold text-slate-800">
+            Healthcare Queries
+          </h1>
 
-                      <td className="p-4">
-                        {item.location}
-                      </td>
+          <p className="text-slate-500 mt-2">
+            Total Queries : {filteredQueries.length}
+          </p>
+        </div>
 
-                      <td className="p-4">
+        <input
+          type="text"
+          placeholder="Search by Name, Phone or District"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full md:w-96 border rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-600"
+        />
+      </div>
 
-                        <select
-                          value={item.status}
-                          onChange={(e) =>
-                            updateStatus(
-                              item._id,
-                              e.target.value
-                            )
-                          }
-                          className="border rounded-lg px-3 py-2"
-                        >
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
 
-                          <option value="new">
-                            New
-                          </option>
+        {loading ? (
 
-                          <option value="In Progress">
-                            In Progress
-                          </option>
-
-                          <option value="Resolved">
-                            Resolved
-                          </option>
-
-                        </select>
-
-                      </td>
-
-                      <td className="p-4 flex gap-2">
-
-                        <button
-                          onClick={() => openQuery(item)}
-                          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
-                        >
-                          View
-                        </button>
-
-                        <button
-                          onClick={() =>
-                            deleteQuery(item._id)
-                          }
-                          className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg"
-                        >
-                          Delete
-                        </button>
-
-                      </td>
-
-                    </tr>
-
-                  ))
-
-                )}
-
-              </tbody>
-
-            </table>
-
+          <div className="text-center py-20 text-xl font-semibold">
+            Loading Healthcare Queries...
           </div>
 
-        )}
+        ) : (
 
-      </div> 
-// ======== PART 3 START =====
-// ===========================
+          <div className="overflow-x-auto">
 
-      {showModal && selectedQuery && (
+            <table className="w-full">
 
-        <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 p-5">
+              <thead className="bg-green-700 text-white">
 
-          <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full">
+                <tr>
 
-            <div className="flex justify-between items-center border-b p-6">
+                  <th className="p-4 text-left">Name</th>
+                  <th className="p-4 text-left">Phone</th>
+                  <th className="p-4 text-left">District</th>
+                  <th className="p-4 text-left">Status</th>
+                  <th className="p-4 text-left">Action</th>
+
+                </tr>
+
+              </thead>
+
+              <tbody>
+                      {showModal && selectedQuery && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+
+          <div className="w-full max-w-2xl rounded-2xl bg-white shadow-2xl">
+
+            <div className="flex items-center justify-between border-b p-6">
 
               <h2 className="text-2xl font-bold">
                 Healthcare Query Details
@@ -300,66 +277,87 @@ export default function HealthcareQueriesPage() {
 
               <button
                 onClick={closeModal}
-                className="text-2xl font-bold hover:text-red-600"
+                className="text-2xl font-bold text-gray-500 hover:text-red-600"
               >
-                ✕
+                ×
               </button>
 
             </div>
 
-            <div className="p-6 space-y-4">
+            <div className="space-y-5 p-6">
 
               <div>
-                <h3 className="font-semibold text-slate-600">
+                <h3 className="font-semibold text-gray-600">
                   Name
                 </h3>
-
-                <p>{selectedQuery.name}</p>
+                <p className="mt-1">{selectedQuery.name}</p>
               </div>
 
               <div>
-                <h3 className="font-semibold text-slate-600">
-                  Mobile
+                <h3 className="font-semibold text-gray-600">
+                  Email
                 </h3>
-
-                <p>{selectedQuery.phone}</p>
+                <p className="mt-1">
+                  {selectedQuery.email || "-"}
+                </p>
               </div>
 
               <div>
-                <h3 className="font-semibold text-slate-600">
+                <h3 className="font-semibold text-gray-600">
+                  Phone
+                </h3>
+                <p className="mt-1">
+                  {selectedQuery.phone || "-"}
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-gray-600">
                   District
                 </h3>
-
-                <p>{selectedQuery.location}</p>
+                <p className="mt-1">
+                  {selectedQuery.location || "-"}
+                </p>
               </div>
 
               <div>
-                <h3 className="font-semibold text-slate-600">
+                <h3 className="font-semibold text-gray-600">
+                  Status
+                </h3>
+
+                <span className="mt-2 inline-block rounded-full bg-green-100 px-4 py-2 text-green-700">
+                  {selectedQuery.status}
+                </span>
+              </div>
+                            <div>
+                <h3 className="font-semibold text-gray-600">
                   Query
                 </h3>
 
-                <div className="bg-slate-100 rounded-xl p-4 whitespace-pre-wrap">
-                  {selectedQuery.message}
+                <div className="mt-2 rounded-xl bg-slate-100 p-4 whitespace-pre-wrap">
+                  {selectedQuery.message || "No message available"}
                 </div>
               </div>
 
               <div>
-                <h3 className="font-semibold text-slate-600">
-                  Status
+                <h3 className="font-semibold text-gray-600">
+                  Submitted On
                 </h3>
 
-                <span className="inline-block mt-2 px-4 py-2 rounded-full bg-green-100 text-green-700">
-                  {selectedQuery.status}
-                </span>
+                <p className="mt-1">
+                  {selectedQuery.createdAt
+                    ? new Date(selectedQuery.createdAt).toLocaleString()
+                    : "-"}
+                </p>
               </div>
 
             </div>
 
-            <div className="border-t p-5 flex justify-end">
+            <div className="flex justify-end gap-3 border-t p-6">
 
               <button
                 onClick={closeModal}
-                className="bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-xl"
+                className="rounded-xl bg-gray-200 px-5 py-2 hover:bg-gray-300"
               >
                 Close
               </button>
@@ -369,14 +367,9 @@ export default function HealthcareQueriesPage() {
           </div>
 
         </div>
-
       )}
 
     </div>
-
   );
 }
-
-// ===========================
-// ======== PART 3 END =======
-// ===========================
+              
