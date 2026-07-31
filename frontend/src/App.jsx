@@ -7,44 +7,62 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import CareersPage from "./pages/CareersPage";
+import BlogPage from "./pages/BlogPage";
+// Agar BlogDetailsPage bani hai to niche wali line uncomment kar dena
+// import BlogDetailsPage from "./pages/BlogDetailsPage";
+
 import AdminPage from "./pages/AdminPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
 import HealthcareQueriesPage from "./pages/admin/HealthcareQueriesPage";
+
 export default function App() {
   return (
     <Layout>
-     <Routes>
-  <Route path="/" element={<HomePage />} />
+      <Routes>
+        {/* Public Pages */}
 
-  <Route path="/about" element={<AboutPage />} />
+        <Route path="/" element={<HomePage />} />
 
-  <Route path="/careers" element={<CareersPage />} />
+        <Route path="/about" element={<AboutPage />} />
 
-  <Route
-    path="/admin-login"
-    element={<AdminLoginPage />}
-  />
+        <Route path="/blog" element={<BlogPage />} />
 
-  <Route
-    path="/admin"
-    element={
-      <ProtectedRoute>
-        <AdminPage />
-      </ProtectedRoute>
-    }
-  />
+        {/* Agar BlogDetailsPage bani hai to ye bhi add karna */}
+        {/* <Route path="/blog/:slug" element={<BlogDetailsPage />} /> */}
 
-  <Route
-    path="/admin/queries"
-    element={
-      <ProtectedRoute>
-        <HealthcareQueriesPage />
-      </ProtectedRoute>
-    }
-  />
-</Routes>
+        <Route path="/careers" element={<CareersPage />} />
 
-<Chatbot />
-</Layout>
-      );
+        {/* Admin Login */}
+
+        <Route
+          path="/admin-login"
+          element={<AdminLoginPage />}
+        />
+
+        {/* Admin Dashboard */}
+
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminPage />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Healthcare Queries */}
+
+        <Route
+          path="/admin/queries"
+          element={
+            <ProtectedRoute>
+              <HealthcareQueriesPage />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+
+      <Chatbot />
+    </Layout>
+  );
 }
