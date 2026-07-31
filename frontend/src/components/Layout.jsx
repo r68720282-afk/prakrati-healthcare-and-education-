@@ -54,7 +54,12 @@ export default function Layout({ children }) {
               >
                 Gallery
               </Link>
-
+                <Link
+  to="/blog"
+  className="hover:text-green-600 transition-all duration-300"
+>
+  Blog
+</Link>
               <Link
                 to="/careers"
                 className="hover:text-green-600 transition-all duration-300"
