@@ -5,7 +5,10 @@ import Chatbot from "./components/Chatbot";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 import HomePage from "./pages/HomePage";
+import BlogPage from "./pages/BlogPage";
+import BlogDetailsPage from "./pages/BlogDetailsPage";
 import AboutPage from "./pages/AboutPage";
+import ProgramsPage from "./pages/ProgramsPage";
 import CareersPage from "./pages/CareersPage";
 import AdminPage from "./pages/AdminPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
@@ -18,7 +21,13 @@ export default function App() {
 
   <Route path="/about" element={<AboutPage />} />
 
+  <Route path="/programs" element={<ProgramsPage />} />
+
   <Route path="/careers" element={<CareersPage />} />
+
+  <Route path="/blog" element={<BlogPage />} />
+
+  <Route path="/blog/:slug" element={<BlogDetailsPage />} />
 
   <Route
     path="/admin-login"
