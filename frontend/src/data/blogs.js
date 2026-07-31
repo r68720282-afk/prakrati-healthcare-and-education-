@@ -158,3 +158,147 @@ and monitoring blood pressure can improve heart health.
 Regular health screenings allow early detection of cardiovascular risks.
 `
   },
+    {
+    id: 5,
+    slug: "stress-management-tips",
+    title: "Stress Management Tips for a Peaceful Mind",
+    category: "Mental Health",
+    image: "/blog/stress.jpg",
+    date: "July 20, 2026",
+    readingTime: "5 min read",
+    author: "Prakrati Healthcare Team",
+    featured: false,
+
+    excerpt:
+      "Simple stress management techniques can improve emotional well-being and overall quality of life.",
+
+    seoTitle:
+      "Stress Management Tips",
+
+    metaDescription:
+      "Learn practical ways to reduce stress and improve mental wellness.",
+
+    keywords: [
+      "Stress",
+      "Mental Health",
+      "Wellness"
+    ],
+
+    content: `
+Managing stress is essential for maintaining both mental and physical health.
+
+Practice meditation, deep breathing, regular exercise, and spend quality time
+with family and friends.
+
+Adequate sleep and healthy eating habits also contribute to reducing stress levels.
+`
+  },
+
+  {
+    id: 6,
+    slug: "yoga-for-beginners",
+    title: "Yoga for Beginners: Daily Health Benefits",
+    category: "Yoga",
+    image: "/blog/yoga.jpg",
+    date: "July 18, 2026",
+    readingTime: "6 min read",
+    author: "Prakrati Healthcare Team",
+    featured: false,
+
+    excerpt:
+      "Daily yoga improves flexibility, mental peace, posture and overall health.",
+
+    seoTitle:
+      "Yoga for Beginners",
+
+    metaDescription:
+      "Discover the benefits of practicing yoga every day.",
+
+    keywords: [
+      "Yoga",
+      "Fitness",
+      "Exercise"
+    ],
+
+    content: `
+Yoga is one of the simplest ways to improve physical and mental health.
+
+Daily yoga increases flexibility, reduces stress,
+improves breathing and supports better posture.
+
+Even 20 minutes of yoga every day can make a noticeable difference.
+`
+  },
+
+  {
+    id: 7,
+    slug: "child-health-checkups",
+    title: "Importance of Child Health Checkups",
+    category: "Child Healthcare",
+    image: "/blog/child-health.jpg",
+    date: "July 16, 2026",
+    readingTime: "5 min read",
+    author: "Prakrati Healthcare Team",
+    featured: false,
+
+    excerpt:
+      "Routine health checkups help monitor a child's growth and detect health issues early.",
+
+    seoTitle:
+      "Child Health Checkups",
+
+    metaDescription:
+      "Why regular health checkups are important for children.",
+
+    keywords: [
+      "Child Health",
+      "Pediatric",
+      "Healthcare"
+    ],
+
+    content: `
+Children grow rapidly, making regular health examinations important.
+
+Routine checkups help monitor growth, nutrition,
+vaccinations and overall development.
+
+Parents should consult qualified healthcare professionals whenever concerns arise.
+`
+  },
+
+  {
+    id: 8,
+    slug: "healthy-lifestyle-habits",
+    title: "How to Build Healthy Lifestyle Habits",
+    category: "Healthy Lifestyle",
+    image: "/blog/lifestyle.jpg",
+    date: "July 14, 2026",
+    readingTime: "6 min read",
+    author: "Prakrati Healthcare Team",
+    featured: false,
+
+    excerpt:
+      "Healthy habits formed today can improve your future health and overall well-being.",
+
+    seoTitle:
+      "Healthy Lifestyle Habits",
+
+    metaDescription:
+      "Simple daily habits that support a healthy lifestyle.",
+
+    keywords: [
+      "Lifestyle",
+      "Healthy Living",
+      "Wellness"
+    ],
+
+    content: `
+Building healthy habits requires consistency.
+
+Eat nutritious food, exercise regularly,
+sleep well, drink enough water,
+avoid smoking and schedule regular health checkups.
+
+Small improvements each day can lead to significant long-term health benefits.
+`
+  },
