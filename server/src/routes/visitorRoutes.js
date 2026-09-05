@@ -3,7 +3,7 @@ import {
   trackVisitor,
   getVisitorStats,
 } from "../controllers/visitorController.js";
-import { protectAdmin } from "../middleware/auth.js";
+router.get("/stats", getVisitorStats);
 
 const router = express.Router();
 
