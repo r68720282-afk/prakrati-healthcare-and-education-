@@ -10,10 +10,12 @@ import Volunteer from "../models/Volunteer.js";
 import ContactRequest from "../models/ContactRequest.js";
 import Newsletter from "../models/Newsletter.js";
 import Event from "../models/Event.js";
+import visitorRoutes from "./visitorRoutes.js";
 
 const router = express.Router();
 
 router.use("/auth", authRoutes);
+router.use("/visitors", visitorRoutes);
 
 router.get("/public/config", (_req, res) =>
   res.json({
