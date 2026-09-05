@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 export default function Layout({ children }) {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white flex flex-col">
+      {/* Header */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between h-20">
@@ -54,12 +56,14 @@ export default function Layout({ children }) {
               >
                 Gallery
               </Link>
-                <Link
-  to="/blog"
-  className="hover:text-green-600 transition-all duration-300"
->
-  Blog
-</Link>
+
+              <Link
+                to="/blog"
+                className="hover:text-green-600 transition-all duration-300"
+              >
+                Blog
+              </Link>
+
               <Link
                 to="/careers"
                 className="hover:text-green-600 transition-all duration-300"
@@ -87,7 +91,10 @@ export default function Layout({ children }) {
       </header>
 
       {/* Page Content */}
-      <main>{children}</main>
+      <main className="flex-1">{children}</main>
+
+      {/* Footer */}
+      <Footer />
 
       {/* WhatsApp Button */}
       <a
