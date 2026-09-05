@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import VisitorCounter from "./VisitorCounter";
 
 export default function Footer() {
   const scrollTop = () =>
@@ -159,6 +160,8 @@ export default function Footer() {
 
           {/* Bottom */}
           <div className="mt-14 border-t border-slate-700 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+
+            <VisitorCounter />
 
             <p className="text-slate-400 text-sm">
               © 2026 Prakrati Healthcare & Education. All rights reserved.
