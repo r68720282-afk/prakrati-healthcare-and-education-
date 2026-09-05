@@ -292,7 +292,7 @@ Parents should consult qualified healthcare professionals whenever concerns aris
       "Wellness"
     ],
 
-    content: `
+   content: `
 Building healthy habits requires consistency.
 
 Eat nutritious food, exercise regularly,
@@ -301,4 +301,7 @@ avoid smoking and schedule regular health checkups.
 
 Small improvements each day can lead to significant long-term health benefits.
 `
-  },
+  }
+];
+
+export default blogs;
