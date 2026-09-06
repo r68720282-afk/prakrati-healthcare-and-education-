@@ -1,3 +1,4 @@
+const [isOpen, setIsOpen] = useState(false);
 import { useState } from "react";
 
 export default function Chatbot() {
