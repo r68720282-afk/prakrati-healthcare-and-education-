@@ -11,29 +11,32 @@ export default function VisitorCounter() {
   useEffect(() => {
     if (!siteSettings.showVisitorCounter) return;
 
-    // Har page visit track karega
-    axios.post(`${API}/track`, {
-      page: window.location.pathname,
-    });
+    const load = async () => {
+      try {
+        // Visitor track
+        await axios.post(`${API}/track`, {
+          page: window.location.pathname,
+        });
 
-    // Total visitors fetch karega
-    axios
-      .get(`${API}/stats`)
-      .then((res) => {
+        // Total count
+        const res = await axios.get(`${API}/stats`);
         setTotal(res.data.totalVisitors || 0);
-      })
-      .catch((err) => console.error(err));
+      } catch (err) {
+        console.error("Visitor Counter Error:", err);
+      }
+    };
+
+    load();
   }, []);
 
   if (!siteSettings.showVisitorCounter) return null;
 
   return (
-    <div className="flex items-center justify-center gap-2 rounded-xl bg-slate-800 px-5 py-3 text-white shadow-lg">
-      <span className="text-xl">👁</span>
+    <div className="bg-slate-800 border border-slate-700 rounded-xl px-5 py-3 flex items-center gap-3">
+      <span className="text-2xl">👁️</span>
 
-      <div className="text-center">
-        <p className="text-xs text-slate-300">Total Visitors</p>
-
+      <div>
+        <p className="text-xs text-slate-400">Total Visitors</p>
         <h3 className="text-xl font-bold text-green-400">
           {total.toLocaleString()}
         </h3>
