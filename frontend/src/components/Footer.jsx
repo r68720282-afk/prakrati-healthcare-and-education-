@@ -116,9 +116,9 @@ export default function Footer() {
 
                 <li>Women's Health</li>
                 <li>Nutrition</li>
-                <li>Mental Health</li>
+    
                 <li>Yoga</li>
-                <li>Heart Health</li>
+        
                 <li>Diabetes</li>
 
               </ul>
