@@ -11,14 +11,14 @@ export default function VisitorCounter() {
   useEffect(() => {
     if (!siteSettings.showVisitorCounter) return;
 
-    const load = async () => {
+    const fetchVisitors = async () => {
       try {
-        // Visitor track
+        // Current page visit track
         await axios.post(`${API}/track`, {
           page: window.location.pathname,
         });
 
-        // Total count
+        // Total visitors fetch
         const res = await axios.get(`${API}/stats`);
         setTotal(res.data.totalVisitors || 0);
       } catch (err) {
@@ -26,13 +26,13 @@ export default function VisitorCounter() {
       }
     };
 
-    load();
+    fetchVisitors();
   }, []);
 
   if (!siteSettings.showVisitorCounter) return null;
 
   return (
-    <div className="bg-slate-800 border border-slate-700 rounded-xl px-5 py-3 flex items-center gap-3">
+    <div className="flex items-center gap-3 rounded-xl border border-slate-700 bg-slate-800 px-5 py-3">
       <span className="text-2xl">👁️</span>
 
       <div>
