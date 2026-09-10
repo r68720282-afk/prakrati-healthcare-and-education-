@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import HeroSection from "../components/HeroSection";
 import WhyChooseUs from "../components/WhyChooseUs";
-import AboutSection from "../components/AboutSection";
 import ServicesSection from "../components/ServicesSection";
 import ProcessSection from "../components/ProcessSection";
 import GallerySection from "../components/GallerySection";
@@ -34,8 +33,6 @@ export default function HomePage() {
       <HeroSection />
 
       <WhyChooseUs />
-
-      <AboutSection />
 
       <ServicesSection />
 
